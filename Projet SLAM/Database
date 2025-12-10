@@ -1,0 +1,30 @@
+CREATE DATABASE legendary_motorsport;
+
+USE legendary_motorsport;
+ 
+CREATE TABLE users (
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    fullname VARCHAR(100) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL
+);
+ 
+CREATE TABLE cars (
+    id_car INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    brand VARCHAR(100) NOT NULL,
+    description TEXT
+);
+ 
+CREATE TABLE reservations (
+
+    id_reservation INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    id_car INT NOT NULL,
+    date_reservation DATE NOT NULL,
+    message TEXT,
+    FOREIGN KEY (id_user) REFERENCES users(id_user),
+    FOREIGN KEY (id_car) REFERENCES cars(id_car)
+);
+
+ 
